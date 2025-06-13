@@ -8,10 +8,8 @@ import threading
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse, parse_qs
 
-# Konfigurasi logging
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s] %(message)s')
 
-# Implementasi HttpServer
 class HttpServer:
     def proses(self, data):
         lines = data.strip().split("\r\n")
@@ -92,11 +90,8 @@ class HttpServer:
         return response.encode()
 
 
-# Inisialisasi server
 httpserver = HttpServer()
 
-
-# Fungsi untuk memproses koneksi dari client
 def ProcessTheClient(connection, address):
     rcv = ""
     try:
@@ -119,7 +114,6 @@ def ProcessTheClient(connection, address):
         connection.close()
 
 
-# Fungsi utama server menggunakan ThreadPool
 def Server():
     the_clients = []
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
